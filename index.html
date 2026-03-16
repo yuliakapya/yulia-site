@@ -125,9 +125,21 @@
 
   /* HERO */
   .hero {
-    min-height: calc(100vh - 108px);
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 360px 1fr 1fr;
+  }
+
+  .hero-photo {
+    overflow: hidden;
+    border-right: 1px solid var(--warm);
+  }
+
+  .hero-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
   }
 
   .hero-left {
@@ -617,6 +629,7 @@
     .nav-links { display: none; }
     .dual-banner { grid-template-columns: 1fr; }
     .hero { grid-template-columns: 1fr; }
+    .hero-photo { height: 300px; border-right: none; border-bottom: 1px solid var(--warm); }
     section { padding: 60px 20px; }
     .services-grid { grid-template-columns: 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
@@ -662,6 +675,9 @@
 
 <!-- HERO -->
 <section class="hero" id="home" style="padding:0;">
+  <div class="hero-photo">
+    <img src="https://raw.githubusercontent.com/yuliakapya/yulia-site/main/photo.jpg" alt="Yulia Kapustinskaya" />
+  </div>
   <div class="hero-left">
     <p class="hero-eyebrow">Internal Communications · Employer Branding · Employer Experience</p>
     <h1 class="hero-name">Yulia<br><em>Kapustinskaya</em></h1>
@@ -1177,14 +1193,6 @@
 <section id="contact">
   <h2 class="contact-headline">Ready to build something <em>worth reading.</em></h2>
   <p class="contact-sub">Open for full-time roles, contract work, and consulting projects.</p>
-  <p class="contact-detail">Dubai, UAE · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="740d01181d155a1f15040107001d1a071f150d15341319151d185a171b19">[email&#160;protected]</a> · +971 56 859 1102</p>
+  <p class="contact-detail">Dubai, UAE · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="afd6dac3c6ce81c4cedfdadcdbc6c1dcc4ced6ceefc8c2cec6c381ccc0c2">[email&#160;protected]</a> · +971 56 859 1102</p>
   <div class="contact-links">
-    <a href="/cdn-cgi/l/email-protection#95ece0f9fcf4bbfef4e5e0e6e1fcfbe6fef4ecf4d5f2f8f4fcf9bbf6faf8" class="btn-primary">Send an email</a>
-    <a href="#" class="btn-ghost">LinkedIn</a>
-    <a href="#" class="btn-ghost">Download CV</a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-  <
+    <a href="/cdn-cgi/l/email-protection#8cf5f9e0e5eda2e7edfcf9fff8e5e2ffe7edf5edccebe1ede5e0a2efe3e1"
