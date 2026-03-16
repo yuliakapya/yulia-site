@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yulia Kapustinskaya — Internal Comms & Employer Experience</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #141210;
+    --paper: #f5f1ea;
+    --warm: #e8e0d0;
+    --muted: #9a9088;
+    --accent: #c0392b;
+    --mid: #4a4540;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 48px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--warm);
+  }
+
+  .nav-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    align-items: center;
+  }
+
+  .nav-links a {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover { color: var(--ink); }
+
+  .lang-toggle {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    padding: 5px 10px;
+    border: 1px solid var(--warm);
+    color: var(--muted);
+    cursor: pointer;
+    background: transparent;
+    font-family: 'Instrument Sans', sans-serif;
+  }
+
+  /* DUAL-PURPOSE BANNER */
+  .dual-banner {
+    margin-top: 64px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 1px solid var(--warm);
+  }
+
+  .dual-left {
+    padding: 18px 48px;
+    background: var(--ink);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border-right: 1px solid #333;
+  }
+
+  .dual-right {
+    padding: 18px 48px;
+    background: var(--warm);
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .dual-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .dot-hire { background: #e8d5a3; }
+  .dot-consult { background: var(--accent); }
+
+  .dual-label {
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+  }
+
+  .dual-left .dual-label { color: rgba(255,255,255,0.5); }
+  .dual-right .dual-label { color: var(--mid); }
+
+  .dual-left .dual-desc { font-size: 12px; color: rgba(255,255,255,0.3); }
+  .dual-right .dual-desc { font-size: 12px; color: var(--muted); }
+
+  /* HERO */
+  .hero {
+    min-height: calc(100vh - 108px);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .hero-left {
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-right: 1px solid var(--warm);
+    animation: fadeIn 0.9s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 28px;
+  }
+
+  .hero-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(42px, 5vw, 72px);
+    font-weight: 300;
+    line-height: 1.05;
+    margin-bottom: 8px;
+  }
+
+  .hero-name em { font-style: italic; color: var(--accent); }
+
+  .hero-subtitle {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--muted);
+    font-style: italic;
+    margin-bottom: 32px;
+    font-weight: 300;
+  }
+
+  .hero-bio {
+    font-size: 14px;
+    line-height: 1.82;
+    color: var(--mid);
+    max-width: 440px;
+    margin-bottom: 44px;
+  }
+
+  .hero-cta {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    padding: 13px 28px;
+    background: var(--ink);
+    color: var(--paper);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background 0.2s;
+    display: inline-block;
+  }
+
+  .btn-primary:hover { background: var(--accent); }
+
+  .btn-ghost {
+    padding: 13px 28px;
+    background: transparent;
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border: 1px solid var(--ink);
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+    display: inline-block;
+  }
+
+  .btn-ghost:hover { background: var(--ink); color: var(--paper); }
+
+  .hero-right {
+    padding: 80px 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    animation: fadeIn 1.1s ease both;
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--warm);
+    border: 1px solid var(--warm);
+    margin-bottom: 36px;
+  }
+
+  .stat-cell {
+    background: var(--paper);
+    padding: 28px 22px;
+  }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 46px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+  }
+
+  .stat-num span { color: var(--accent); }
+
+  .stat-desc {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 8px;
+    line-height: 1.5;
+  }
+
+  .hero-location {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+  }
+
+  .hero-industries {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .industry-tag {
+    font-size: 11px;
+    padding: 5px 12px;
+    border: 1px solid var(--warm);
+    color: var(--muted);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+  }
+
+  /* SECTION SHARED */
+  section { padding: 96px 48px; }
+
+  .section-header {
+    display: flex;
+    align-items: baseline;
+    gap: 20px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid var(--warm);
+    padding-bottom: 18px;
+  }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--muted);
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+  }
+
+  .section-title em { font-style: italic; color: var(--accent); }
+
+  /* SERVICES */
+  #services { background: var(--ink); color: var(--paper); }
+  #services .section-title { color: var(--paper); }
+  #services .section-num { color: rgba(255,255,255,0.3); }
+  #services .section-header { border-color: #2a2825; }
+
+  .services-intro {
+    font-size: 14px;
+    color: #7a7570;
+    margin-bottom: 40px;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-top: -30px;
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1px;
+    background: #2a2825;
+    border: 1px solid #2a2825;
+  }
+
+  .service-card {
+    background: var(--ink);
+    padding: 36px 28px;
+    transition: background 0.2s;
+  }
+
+  .service-card:hover { background: #1a1815; }
+
+  .service-tag {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+  }
+
+  .service-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--paper);
+    margin-bottom: 12px;
+    line-height: 1.25;
+  }
+
+  .service-desc {
+    font-size: 13px;
+    color: #7a7570;
+    line-height: 1.75;
+    margin-bottom: 18px;
+  }
+
+  .service-items {
+    list-style: none;
+  }
+
+  .service-items li {
+    font-size: 12px;
+    color: #5a5550;
+    padding: 6px 0;
+    border-bottom: 1px solid #222;
+    letter-spacing: 0.02em;
+  }
+
+  .service-items li::before { content: '— '; color: var(--accent); }
+
+  /* PORTFOLIO */
+  #portfolio { background: var(--warm); }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .portfolio-grid > div[style*="grid-column"] { grid-column: span 2; }
+
+  .portfolio-card {
+    background: var(--paper);
+    padding: 34px 30px;
+    border: 1px solid #ddd8ce;
+    transition: box-shadow 0.2s, transform 0.2s;
+    cursor: pointer;
+  }
+
+  .portfolio-card:hover {
+    box-shadow: 4px 4px 0 var(--ink);
+    transform: translate(-2px, -2px);
+  }
+
+  .portfolio-tag {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+
+  .portfolio-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 23px;
+    font-weight: 400;
+    line-height: 1.3;
+    margin-bottom: 12px;
+  }
+
+  .portfolio-desc {
+    font-size: 13px;
+    color: var(--mid);
+    line-height: 1.72;
+    margin-bottom: 18px;
+  }
+
+  .portfolio-result {
+    font-size: 12px;
+    color: var(--muted);
+    padding-top: 14px;
+    border-top: 1px solid var(--warm);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .result-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--ink);
+    flex-shrink: 0;
+  }
+
+  /* ARTICLES */
+  #articles { background: var(--paper); }
+
+  .articles-list { display: flex; flex-direction: column; }
+
+  .article-row {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 28px;
+    padding: 26px 0;
+    border-bottom: 1px solid var(--warm);
+    cursor: pointer;
+  }
+
+  .article-row:hover .article-title { color: var(--accent); }
+
+  .article-date {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.4;
+    padding-top: 3px;
+  }
+
+  .article-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 22px;
+    font-weight: 400;
+    margin-bottom: 6px;
+    transition: color 0.2s;
+    line-height: 1.3;
+  }
+
+  .article-summary { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  .article-type {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    border: 1px solid var(--warm);
+    padding: 4px 10px;
+    white-space: nowrap;
+    margin-top: 4px;
+  }
+
+  /* EXPERIENCE */
+  #experience { background: var(--ink); color: var(--paper); }
+  #experience .section-title { color: var(--paper); }
+  #experience .section-num { color: rgba(255,255,255,0.3); }
+  #experience .section-header { border-color: #2a2825; }
+
+  .exp-list { display: flex; flex-direction: column; }
+
+  .exp-row {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 40px;
+    padding: 36px 0;
+    border-bottom: 1px solid #2a2825;
+  }
+
+  .exp-meta { padding-top: 4px; }
+
+  .exp-period { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; margin-bottom: 6px; }
+
+  .exp-company {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    color: var(--paper);
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+
+  .exp-industry { font-size: 11px; color: #5a5550; letter-spacing: 0.04em; }
+
+  .exp-role {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--paper);
+    margin-bottom: 14px;
+    line-height: 1.2;
+  }
+
+  .exp-desc {
+    font-size: 13px;
+    color: #8a8480;
+    line-height: 1.75;
+    margin-bottom: 16px;
+  }
+
+  .exp-achievements {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+
+  .exp-achievement { font-size: 12px; color: #6a6460; }
+
+  .exp-achievement strong {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 20px;
+    color: var(--accent);
+    display: block;
+    font-weight: 400;
+  }
+
+  .exp-award {
+    display: inline-block;
+    font-size: 11px;
+    color: #e8d5a3;
+    border: 1px solid #3a3530;
+    padding: 4px 12px;
+    margin-top: 14px;
+    letter-spacing: 0.04em;
+  }
+
+  /* CONTACT */
+  #contact {
+    background: var(--paper);
+    text-align: center;
+    padding: 120px 48px;
+  }
+
+  .contact-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(32px, 4.5vw, 60px);
+    font-weight: 300;
+    line-height: 1.15;
+    max-width: 560px;
+    margin: 0 auto 16px;
+  }
+
+  .contact-headline em { font-style: italic; color: var(--accent); }
+
+  .contact-sub {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 16px;
+  }
+
+  .contact-detail {
+    font-size: 13px;
+    color: var(--muted);
+    margin-bottom: 44px;
+  }
+
+  .contact-links {
+    display: flex;
+    gap: 14px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* FOOTER */
+  footer {
+    padding: 22px 48px;
+    border-top: 1px solid var(--warm);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 15px;
+    color: var(--muted);
+  }
+
+  .footer-copy { font-size: 11px; color: var(--muted); letter-spacing: 0.06em; }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 16px 20px; }
+    .nav-links { display: none; }
+    .dual-banner { grid-template-columns: 1fr; }
+    .hero { grid-template-columns: 1fr; }
+    section { padding: 60px 20px; }
+    .services-grid { grid-template-columns: 1fr; }
+    .portfolio-grid { grid-template-columns: 1fr; }
+    .exp-row { grid-template-columns: 1fr; gap: 10px; }
+    .article-row { grid-template-columns: 1fr; }
+    .article-date, .article-type { display: none; }
+  }
+  .portfolio-grid > div[style*="grid-column"] { grid-column: span 2; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-logo">Yulia Kapustinskaya</a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#portfolio">Portfolio</a></li>
+    <li><a href="#articles">Articles</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><button class="lang-toggle">RU / EN</button></li>
+  </ul>
+</nav>
+
+<!-- DUAL PURPOSE BANNER -->
+<div class="dual-banner">
+  <div class="dual-left">
+    <div class="dual-dot dot-hire"></div>
+    <div>
+      <div class="dual-label">Open to hire</div>
+      <div class="dual-desc">Looking for a full-time or contract role in internal comms or employer brand</div>
+    </div>
+  </div>
+  <div class="dual-right">
+    <div class="dual-dot dot-consult"></div>
+    <div>
+      <div class="dual-label">Available for consulting</div>
+      <div class="dual-desc">Audits, strategy, content, corporate media & employer experience projects</div>
+    </div>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home" style="padding:0;">
+  <div class="hero-left">
+    <p class="hero-eyebrow">Internal Communications · Employer Branding · Employer Experience</p>
+    <h1 class="hero-name">Yulia<br><em>Kapustinskaya</em></h1>
+    <p class="hero-subtitle">Employer Branding & Internal Communications Manager</p>
+    <p class="hero-bio">I help companies build real dialogue between employer and employees — not just announcements. With 6+ years across IT, healthcare, and telecom, I design communication systems, employer experiences, and internal media that people actually use.</p>
+    <div class="hero-cta">
+      <a href="#services" class="btn-primary">See my services</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-stats">
+      <div class="stat-cell">
+        <div class="stat-num">40<span>%</span></div>
+        <div class="stat-desc">Increase in employee loyalty & engagement — Dept. of IT, Moscow Gov</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">1.5<span>×</span></div>
+        <div class="stat-desc">Corporate intranet traffic growth after full redesign & relaunch</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">60<span>%</span></div>
+        <div class="stat-desc">Internal media readership growth — SM-Clinic Group</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-num">6<span>+</span></div>
+        <div class="stat-desc">Years in internal comms & employer branding</div>
+      </div>
+    </div>
+    <div class="hero-location">📍 Dubai, UAE · Open to remote & relocation</div>
+    <div class="hero-industries">
+      <span class="industry-tag">IT & Gov</span>
+      <span class="industry-tag">Healthcare</span>
+      <span class="industry-tag">Telecom</span>
+      <span class="industry-tag">Finance</span>
+      <span class="industry-tag">Remote Teams</span>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <span class="section-num">01</span>
+    <h2 class="section-title">What I <em>do</em></h2>
+  </div>
+  <p class="services-intro">Whether you need a full-time communications leader or a consulting partner for a specific project — here's what I bring to the table.</p>
+  <div class="services-grid">
+
+    <div class="service-card">
+      <div class="service-tag">Strategy & Audit</div>
+      <div class="service-name">Internal Communications Strategy & Audit</div>
+      <div class="service-desc">Diagnose what's broken, design what should exist. I audit your current state and build a communication architecture that works for your team structure.</div>
+      <ul class="service-items">
+        <li>Communication audit & gap analysis</li>
+        <li>Channel architecture & governance</li>
+        <li>Internal comms strategy for remote teams</li>
+        <li>EVP development & messaging</li>
+        <li>Engagement surveys & data analysis</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-tag">Content & Editorial</div>
+      <div class="service-name">Content Plans, Editorial Policy & Editorial Systems</div>
+      <div class="service-desc">Build content systems that run themselves. From editorial calendars to tone of voice guides, I help companies communicate consistently at scale.</div>
+      <ul class="service-items">
+        <li>Content strategy & content plans</li>
+        <li>Editorial Policy (editorial policy)</li>
+        <li>Tone of voice development</li>
+        <li>Guidebooks & employee handbooks</li>
+        <li>Intranet & portal content architecture</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-tag">Corporate Media & Production</div>
+      <div class="service-name">Corporate Book, Magazine & Video</div>
+      <div class="service-desc">Turn your company's story into media people want to read and watch — from annual corporate books to branded video series and internal magazines.</div>
+      <ul class="service-items">
+        <li>Corporate book concept & production</li>
+        <li>Internal magazine (print & digital)</li>
+        <li>Corporate video scripts & briefs</li>
+        <li>Employee storytelling campaigns</li>
+        <li>Brand ambassador programs</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-tag">Employer Experience</div>
+      <div class="service-name">Events, Merch & Employer Experience</div>
+      <div class="service-desc">Design the moments that make employees feel connected — from onboarding rituals to branded merch and internal events that people actually want to attend.</div>
+      <ul class="service-items">
+        <li>Employee experience program design</li>
+        <li>Corporate events (online & offline)</li>
+        <li>Branded merch concepts & briefs</li>
+        <li>Onboarding & preboarding materials</li>
+        <li>Early talent & university partnerships</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-tag">Employer Branding</div>
+      <div class="service-name">Employer Brand Strategy & Campaigns</div>
+      <div class="service-desc">Build an employer brand that attracts the right people and retains the ones you have — from external positioning to internal culture campaigns.</div>
+      <ul class="service-items">
+        <li>Employer brand audit & positioning</li>
+        <li>HR brand campaigns</li>
+        <li>Employer Instagram / social content</li>
+        <li>Leadership communications</li>
+        <li>Employer reputation management</li>
+      </ul>
+    </div>
+
+    <div class="service-card">
+      <div class="service-tag">Copywriting & Editing</div>
+      <div class="service-name">Expert Articles, Speeches & Corporate Copy</div>
+      <div class="service-desc">Words that work. I write expert content, executive speeches, longreads, and corporate copy that sounds like a human wrote it — because one did.</div>
+      <ul class="service-items">
+        <li>Expert articles & longreads</li>
+        <li>Executive speechwriting</li>
+        <li>Internal newsletters & announcements</li>
+        <li>Email campaign copy</li>
+        <li>Editing & proofreading (RU/EN)</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="section-header">
+    <span class="section-num">02</span>
+    <h2 class="section-title">Selected <em>work</em></h2>
+  </div>
+  <div class="portfolio-grid">
+
+    <!-- CASE 1 -->
+    <div class="portfolio-card" style="grid-column: span 2;">
+      <div style="display:grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items:start;">
+        <div>
+          <div class="portfolio-tag">Internal Comms System · Gov IT · Moscow · 2020–2023</div>
+          <div class="portfolio-title">Building an Internal Comms Ecosystem for 3,500+ Employees</div>
+
+          <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">The Challenge</div>
+          <p style="font-size:13px; color:var(--mid); line-height:1.75;">The Dept. of IT, Moscow Government had no unified internal communications system. With 3,500+ employees spread across product teams, no shared content logic, and no engagement culture — the team was informed but not connected. Communications were reactive: evacuation notices, not strategy.</p>
+
+          <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">My Role</div>
+          <p style="font-size:13px; color:var(--mid); line-height:1.75;">Member of the core Corporate Communications team. Responsible for content strategy, editorial production, the weekly digest, and communication scripts for campaigns and events. Worked within a 12-person team that collectively owned all 9 communication channels.</p>
+
+          <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">What We Built</div>
+          <p style="font-size:13px; color:var(--mid); line-height:1.75;">A full-scale internal media and engagement system: 9 content rubrics (employee stories, "how it works" explainers, leadership Q&As, career profiles, team life, achievements), 9 communication channels (portal articles, email campaigns, weekly digest, messenger posts, banners, events, corporate TV, intranet landings, pulse surveys), editorial policy, and a content plan with segmented audience targeting and analytics cycles.</p>
+        </div>
+        <div>
+          <div style="background:var(--ink); padding:32px; margin-bottom: 16px;">
+            <div style="font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--muted); margin-bottom:24px;">Scale of the system</div>
+            <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+              <div style="border-left:2px solid var(--accent); padding-left:14px;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--paper);">900+</div>
+                <div style="font-size:11px; color:var(--muted); line-height:1.5;">email campaigns sent</div>
+              </div>
+              <div style="border-left:2px solid var(--accent); padding-left:14px;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--paper);">500+</div>
+                <div style="font-size:11px; color:var(--muted); line-height:1.5;">portal articles published</div>
+              </div>
+              <div style="border-left:2px solid var(--accent); padding-left:14px;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--paper);">50+</div>
+                <div style="font-size:11px; color:var(--muted); line-height:1.5;">weekly digest issues</div>
+              </div>
+              <div style="border-left:2px solid var(--accent); padding-left:14px;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--paper);">20+</div>
+                <div style="font-size:11px; color:var(--muted); line-height:1.5;">events per year</div>
+              </div>
+              <div style="border-left:2px solid var(--accent); padding-left:14px;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--paper);">200+</div>
+                <div style="font-size:11px; color:var(--muted); line-height:1.5;">messenger posts</div>
+              </div>
+              <div style="border-left:2px solid var(--accent); padding-left:14px;">
+                <div style="font-family:'Cormorant Garamond',serif; font-size:32px; color:var(--paper);">9</div>
+                <div style="font-size:11px; color:var(--muted); line-height:1.5;">content rubrics</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="portfolio-result" style="margin-top:0;">
+            <span class="result-num">40%</span>
+            <span>increase in employee loyalty & engagement over 2.5 years</span>
+          </div>
+
+          <div style="margin-top:16px; padding:16px; background:var(--warm); font-size:12px; color:var(--mid); line-height:1.7;">
+            <strong style="display:block; margin-bottom:6px; font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">Sectors I understand from this project</strong>
+            Government IT · Digital Products · Public Services · Distributed Teams
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CASE 2 -->
+    <div class="portfolio-card">
+      <div class="portfolio-tag">Corporate Media · Healthcare · 2018–2020</div>
+      <div class="portfolio-title">Corporate Newspaper & Employer Brand, SM-Clinic Group</div>
+
+      <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">The Challenge</div>
+      <p style="font-size:13px; color:var(--mid); line-height:1.75;">SM-Clinic is one of Russia's largest private healthcare groups, with clinics across multiple cities. The internal brand was fragmented — staff didn't feel connected across locations, and the company had no consistent voice for employer storytelling. There was a corporate newspaper in name only, with minimal readership.</p>
+
+      <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">What I Did</div>
+      <p style="font-size:13px; color:var(--mid); line-height:1.75;">Took full ownership of internal corporate media: relaunched the newspaper with a new editorial concept, wrote and edited interviews with doctors and managers, produced culture stories and employer brand content. Launched and ran the company's employer Instagram from scratch, growing it to 900+ followers. Also led engagement campaigns and internal communications for all-staff announcements.</p>
+
+      <div style="margin-top:20px; padding:16px 0; border-top:1px solid var(--warm); border-bottom:1px solid var(--warm);">
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;">
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:36px; color:var(--ink);">60%</div>
+            <div style="font-size:11px; color:var(--muted);">readership growth</div>
+          </div>
+          <div>
+            <div style="font-family:'Cormorant Garamond',serif; font-size:36px; color:var(--ink);">900+</div>
+            <div style="font-size:11px; color:var(--muted);">employer Instagram followers</div>
+          </div>
+        </div>
+        <div style="display:inline-block; padding:6px 14px; background:var(--ink); color:var(--paper); font-size:11px; letter-spacing:0.08em; text-transform:uppercase;">🏆 MediaLeader Award 2018 — Best Corporate Media in Healthcare</div>
+      </div>
+    </div>
+
+    <!-- CASE 3 -->
+    <div class="portfolio-card">
+      <div class="portfolio-tag">Employer Brand · Finance · Dubai · EN · 2024–2025</div>
+      <div class="portfolio-title">Employer Brand & Tone of Voice, Skybound Wealth Management</div>
+
+      <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">The Challenge</div>
+      <p style="font-size:13px; color:var(--mid); line-height:1.75;">Skybound is a Dubai-based international wealth management firm with a distributed team across multiple countries. Despite strong business positioning externally, the employer brand lacked consistency — different team leads communicated in different tones, and there was no unified internal narrative or content framework.</p>
+
+      <div style="margin: 20px 0 12px; font-size:11px; letter-spacing:0.1em; text-transform:uppercase; color:var(--accent);">What I Did</div>
+      <p style="font-size:13px; color:var(--mid); line-height:1.75;">As a contract consultant, I owned the internal communications and employer brand function end-to-end. Built a unified tone of voice guide, developed content frameworks for leadership and HR communications, and wrote expert articles in English for the company's external channels — including pieces on expat financial planning and women in investing. Partnered with HR and leadership to align culture messaging with business priorities.</p>
+
+      <div style="margin-top:20px; padding:16px; background:var(--ink);">
+        <div style="font-size:11px; color:var(--muted); margin-bottom:12px; letter-spacing:0.08em; text-transform:uppercase;">Deliverables</div>
+        <div style="display:flex; flex-direction:column; gap:8px;">
+          <div style="font-size:12px; color:#8a8480; line-height:1.6; padding-left:12px; border-left:1px solid #333;">Tone of voice guide & brand messaging framework</div>
+          <div style="font-size:12px; color:#8a8480; line-height:1.6; padding-left:12px; border-left:1px solid #333;">Internal communication templates for HR & leadership</div>
+          <div style="font-size:12px; color:#8a8480; line-height:1.6; padding-left:12px; border-left:1px solid #333;">Expert articles in English for external publication</div>
+          <div style="font-size:12px; color:#8a8480; line-height:1.6; padding-left:12px; border-left:1px solid #333;">Content calendar & editorial policy</div>
+        </div>
+        <div style="margin-top:14px; font-size:11px; color:var(--muted); letter-spacing:0.06em; text-transform:uppercase;">Language: English · Market: UAE / International</div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="text-align:center; margin-top:40px;">
+    <p style="font-size:13px; color:var(--muted); margin-bottom:16px;">More work available on request — copywriting samples, editorial cases, email campaigns</p>
+    <a href="#contact" class="btn-ghost">Request full portfolio PDF</a>
+  </div>
+</section>
+
+<!-- ARTICLES & GUIDES -->
+<section id="articles">
+  <div class="section-header">
+    <span class="section-num">03</span>
+    <h2 class="section-title">Articles <em>&</em> guides</h2>
+  </div>
+  <div class="articles-list">
+
+    <div class="article-row">
+      <div class="article-date">2025</div>
+      <div>
+        <div class="article-title">Why Your Corporate Portal Has No Traffic — And How to Fix It</div>
+        <div class="article-summary">A practical framework for diagnosing low intranet engagement: information architecture, content gaps, ownership models, and adoption strategy.</div>
+      </div>
+      <div class="article-type">Guide</div>
+    </div>
+
+    <div class="article-row">
+      <div class="article-date">2025</div>
+      <div>
+        <div class="article-title">What Is Editorial Policy and Why Every Internal Media Needs One</div>
+        <div class="article-summary">Editorial policy explained: how to build tone of voice, content rules, and publication standards that your whole team can follow.</div>
+      </div>
+      <div class="article-type">Article</div>
+    </div>
+
+    <div class="article-row">
+      <div class="article-date">2024</div>
+      <div>
+        <div class="article-title">Building an Internal Brand Ambassador Program from Scratch</div>
+        <div class="article-summary">Honest lessons from launching peer-to-peer ambassador programs in healthcare and IT — what motivates people, what fails, and what metrics matter.</div>
+      </div>
+      <div class="article-type">Case study</div>
+    </div>
+
+    <div class="article-row">
+      <div class="article-date">2024</div>
+      <div>
+        <div class="article-title">Merch That Means Something: Employer Experience Beyond the T-Shirt</div>
+        <div class="article-summary">Why most corporate merch doesn't build culture — and how to design physical touchpoints that actually reinforce belonging in distributed teams.</div>
+      </div>
+      <div class="article-type">Article</div>
+    </div>
+
+    <div class="article-row">
+      <div class="article-date">2024</div>
+      <div>
+        <div class="article-title">Internal Communications for Remote Teams: A Practical Framework</div>
+        <div class="article-summary">How to design a communication architecture when your team is spread across time zones, roles, and levels of digital fluency.</div>
+      </div>
+      <div class="article-type">Framework</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-header">
+    <span class="section-num">04</span>
+    <h2 class="section-title">Where I've <em>worked</em></h2>
+  </div>
+  <div class="exp-list">
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Dec 2024 — Mar 2025</div>
+        <div class="exp-company">Skybound Wealth Management</div>
+        <div class="exp-industry">Finance · Dubai, UAE</div>
+      </div>
+      <div>
+        <div class="exp-role">Employer Brand & Internal Communications Consultant</div>
+        <div class="exp-desc">Contract role. Owned internal communications and employer brand for a distributed international team. Built unified tone of voice and editorial standards. Developed content frameworks for clarity and engagement. Partnered with HR and leadership on culture and employer brand positioning.</div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Sep 2020 — Jan 2023</div>
+        <div class="exp-company">Dept. of IT, Moscow Government</div>
+        <div class="exp-industry">Government · IT · Moscow</div>
+      </div>
+      <div>
+        <div class="exp-role">Employer Branding & Internal Communications Manager</div>
+        <div class="exp-desc">Built end-to-end internal communications and culture strategy for a large-scale technology organization. Launched and scaled the corporate intranet as an internal product. Led employer brand initiatives, leadership communications, and employee storytelling. Organized online and offline events. Designed early talent employer brand programs with universities. Ran engagement surveys and delivered data-driven insights to HR and leadership.</div>
+        <div class="exp-achievements">
+          <div class="exp-achievement"><strong>40%</strong> engagement growth</div>
+          <div class="exp-achievement"><strong>1.5×</strong> intranet traffic</div>
+          <div class="exp-achievement"><strong>30%</strong> content readership↑</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Oct 2018 — Sep 2020</div>
+        <div class="exp-company">SM-Clinic Group</div>
+        <div class="exp-industry">Healthcare · Moscow</div>
+      </div>
+      <div>
+        <div class="exp-role">Senior Corporate Communications & Employer Brand Manager</div>
+        <div class="exp-desc">Led internal employer brand communications across a multi-location healthcare group. Managed the full content cycle for the corporate blog and internal newspaper. Produced culture-driven content: interviews, longreads, brand stories. Organized internal events. Launched and developed the company's employer Instagram. Built employer brand narratives for student recruitment.</div>
+        <div class="exp-achievements">
+          <div class="exp-achievement"><strong>60%</strong> readership growth</div>
+          <div class="exp-achievement"><strong>900+</strong> employer Instagram followers</div>
+        </div>
+        <div class="exp-award">🏆 MediaLeader Award 2018 — Best Corporate Media in Healthcare</div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Apr 2016 — Oct 2018</div>
+        <div class="exp-company">WestCall</div>
+        <div class="exp-industry">Telecommunications · Moscow</div>
+      </div>
+      <div>
+        <div class="exp-role">Copywriter / Content Editor</div>
+        <div class="exp-desc">Created and edited website content, developed email campaigns, maintained the corporate blog on social media. Worked with SEO structure, headlines, and content logic. Wrote press releases for industry publications.</div>
+      </div>
+    </div>
+
+    <div class="exp-row">
+      <div class="exp-meta">
+        <div class="exp-period">Oct 2024 — Mar 2025</div>
+        <div class="exp-company">Freelance</div>
+        <div class="exp-industry">Copywriting · Remote</div>
+      </div>
+      <div>
+        <div class="exp-role">Copywriter & Content Editor</div>
+        <div class="exp-desc">Expert articles for corporate websites on wealth management, digital products, and carsharing. Email campaign sequences (welcome, product, informational). Factchecking and editorial work. Content guides and editorial policy development. Longreads on IT news and legislative updates for mos.ru.</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background: var(--warm);">
+  <div class="section-header">
+    <span class="section-num">05</span>
+    <h2 class="section-title">Working <em>together</em></h2>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start;">
+
+    <!-- CONSULTING TRACK -->
+    <div>
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:20px;">Consulting & Projects</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.75; margin-bottom:32px;">Project-based and retainer work for companies that need an external communications partner — for a specific task or ongoing support.</p>
+
+      <div style="display:flex; flex-direction:column; gap:1px; background:var(--warm); border:1px solid #ddd8ce;">
+
+        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
+          <div>
+            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Communications Audit</div>
+            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Diagnose gaps, map channels, deliver recommendations</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $1,500</div>
+            <div style="font-size:11px; color:var(--muted);">/ 180,000 ₽</div>
+          </div>
+        </div>
+
+        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
+          <div>
+            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Internal Comms Strategy</div>
+            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Full strategy development, 4–8 weeks</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $3,000</div>
+            <div style="font-size:11px; color:var(--muted);">/ 280,000 ₽</div>
+          </div>
+        </div>
+
+        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
+          <div>
+            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Content Plan & Editorial Policy</div>
+            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Editorial strategy, tone of voice, content calendar</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $800</div>
+            <div style="font-size:11px; color:var(--muted);">/ 80,000 ₽</div>
+          </div>
+        </div>
+
+        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
+          <div>
+            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Corporate Book / Magazine</div>
+            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Concept, structure, content production</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $2,500</div>
+            <div style="font-size:11px; color:var(--muted);">/ 230,000 ₽</div>
+          </div>
+        </div>
+
+        <div style="background:#f0ece4; padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; border-top: 2px solid var(--ink);">
+          <div>
+            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Monthly Retainer</div>
+            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Ongoing advisory, content oversight, strategic support</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $1,500<span style="font-size:14px;">/mo</span></div>
+            <div style="font-size:11px; color:var(--muted);">/ 150,000 ₽/мес</div>
+          </div>
+        </div>
+
+      </div>
+
+      <p style="font-size:12px; color:var(--muted); margin-top:16px; line-height:1.6;">Final pricing depends on company size, scope, and timeline. All projects start with a free 30-minute call.</p>
+    </div>
+
+    <!-- HIRE TRACK -->
+    <div>
+      <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:#c8a96e; margin-bottom:20px;">Open to In-House Roles</div>
+      <p style="font-size:14px; color:var(--mid); line-height:1.75; margin-bottom:32px;">I'm also open to joining a company full-time or on a long-term contract as an Internal Communications or Employer Branding lead.</p>
+
+      <div style="background:var(--ink); padding:36px 32px; margin-bottom:20px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--paper); margin-bottom:20px; line-height:1.2;">What I bring<br><em style="color:#c8a96e;">to a team</em></div>
+        <div style="display:flex; flex-direction:column; gap:12px;">
+          <div style="font-size:13px; color:#8a8480; line-height:1.6; padding-bottom:12px; border-bottom:1px solid #2a2825;">
+            <span style="color:var(--paper); font-weight:500;">Strategy ownership</span> — I build systems, not just execute tasks
+          </div>
+          <div style="font-size:13px; color:#8a8480; line-height:1.6; padding-bottom:12px; border-bottom:1px solid #2a2825;">
+            <span style="color:var(--paper); font-weight:500;">Remote & distributed teams</span> — IT, healthcare, finance, gov sector
+          </div>
+          <div style="font-size:13px; color:#8a8480; line-height:1.6; padding-bottom:12px; border-bottom:1px solid #2a2825;">
+            <span style="color:var(--paper); font-weight:500;">Bilingual</span> — Russian & English, both written and spoken
+          </div>
+          <div style="font-size:13px; color:#8a8480; line-height:1.6; padding-bottom:12px; border-bottom:1px solid #2a2825;">
+            <span style="color:var(--paper); font-weight:500;">Data-driven</span> — engagement surveys, metrics, adoption analysis
+          </div>
+          <div style="font-size:13px; color:#8a8480; line-height:1.6;">
+            <span style="color:var(--paper); font-weight:500;">Based in Dubai</span> — UAE work authorization, open to relocation
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--paper); padding:24px; border:1px solid #ddd8ce;">
+        <div style="font-size:12px; color:var(--muted); margin-bottom:12px; letter-spacing:0.06em; text-transform:uppercase;">Looking for</div>
+        <div style="display:flex; flex-wrap:wrap; gap:8px; margin-bottom:20px;">
+          <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Internal Comms Lead</span>
+          <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Employer Brand Manager</span>
+          <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Head of Comms</span>
+          <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Full-time or Contract</span>
+          <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Remote-friendly</span>
+        </div>
+        <p style="font-size:13px; color:var(--muted); line-height:1.6;">Salary expectations available on request. Let's start with a conversation.</p>
+        <a href="#contact" class="btn-primary" style="display:inline-block; margin-top:16px;">Get in touch</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 class="contact-headline">Ready to build something <em>worth reading.</em></h2>
+  <p class="contact-sub">Open for full-time roles, contract work, and consulting projects.</p>
+  <p class="contact-detail">Dubai, UAE · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="740d01181d155a1f15040107001d1a071f150d15341319151d185a171b19">[email&#160;protected]</a> · +971 56 859 1102</p>
+  <div class="contact-links">
+    <a href="/cdn-cgi/l/email-protection#95ece0f9fcf4bbfef4e5e0e6e1fcfbe6fef4ecf4d5f2f8f4fcf9bbf6faf8" class="btn-primary">Send an email</a>
+    <a href="#" class="btn-ghost">LinkedIn</a>
+    <a href="#" class="btn-ghost">Download CV</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <
