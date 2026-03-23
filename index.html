@@ -126,13 +126,15 @@
   /* HERO */
   .hero {
     display: grid;
-    grid-template-columns: 1fr 480px;
+    grid-template-columns: 400px 1fr 280px;
     min-height: 100vh;
+    border-bottom: 1px solid var(--warm);
   }
 
+  /* Photo column */
   .hero-photo {
     overflow: hidden;
-    border-left: 1px solid var(--warm);
+    border-right: 1px solid var(--warm);
   }
 
   .hero-photo img {
@@ -144,12 +146,25 @@
     min-height: 100vh;
   }
 
+  /* Text column */
   .hero-left {
-    padding: 140px 64px 80px;
+    padding: 80px 56px;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
+    padding-top: 120px;
+    border-right: 1px solid var(--warm);
     animation: fadeIn 0.9s ease both;
+  }
+
+  /* Stats column */
+  .hero-stats-col {
+    padding: 120px 40px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 0;
+    animation: fadeIn 1.1s ease both;
   }
 
   .hero-eyebrow {
@@ -180,11 +195,11 @@
   }
 
   .hero-bio {
-    font-size: 16px;
-    line-height: 1.82;
+    font-size: 17px;
+    line-height: 1.75;
     color: var(--mid);
-    max-width: 440px;
-    margin-bottom: 44px;
+    max-width: 480px;
+    margin-bottom: 36px;
   }
 
   .hero-cta {
@@ -228,12 +243,16 @@
   .btn-ghost:hover { background: var(--ink); color: var(--paper); }
 
   .hero-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1px;
-    background: var(--warm);
-    border: 1px solid var(--warm);
-    margin-bottom: 36px;
+    display: none;
+  }
+
+  .hero-stat-item {
+    padding: 20px 0;
+    border-bottom: 1px solid var(--warm);
+  }
+
+  .hero-stat-item:last-child {
+    border-bottom: none;
   }
 
   .stat-cell {
@@ -247,6 +266,24 @@
     font-weight: 300;
     color: var(--ink);
     line-height: 1;
+  }
+
+  .hero-stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 60px;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+
+  .hero-stat-num span { color: var(--accent); }
+
+  .hero-stat-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.5;
+    max-width: 200px;
   }
 
   .stat-num span { color: var(--accent); }
@@ -623,7 +660,9 @@
     .nav-links { display: none; }
     .dual-banner { grid-template-columns: 1fr; }
     .hero { grid-template-columns: 1fr; }
-    .hero-photo { height: 400px; border-left: none; border-top: 1px solid var(--warm); }
+    .hero-photo { height: 420px; border-right: none; border-bottom: 1px solid var(--warm); }
+    .hero-stats-col { padding: 48px 20px; border-top: 1px solid var(--warm); }
+    .hero-stat-num { font-size: 56px; }
     section { padding: 60px 20px; }
     .services-grid { grid-template-columns: 1fr; }
     .portfolio-grid { grid-template-columns: 1fr; }
@@ -669,16 +708,23 @@
 
 <!-- HERO -->
 <section class="hero" id="home" style="padding:0;">
+
+  <!-- COLUMN 1: PHOTO -->
+  <div class="hero-photo">
+    <img src="https://raw.githubusercontent.com/yuliakapya/yulia-site/main/photo.jpg" alt="Yulia Kapustinskaya" />
+  </div>
+
+  <!-- COLUMN 2: TEXT -->
   <div class="hero-left">
     <p class="hero-eyebrow">Internal Communications · Employer Branding · Employer Experience</p>
     <h1 class="hero-name">Yulia<br><em>Kapustinskaya</em></h1>
     <p class="hero-subtitle">Employer Branding & Internal Communications Manager</p>
-    <p class="hero-bio">I help companies build real dialogue between employer and employees — not just announcements. With 6+ years across IT, healthcare, and telecom, I design communication systems, employer experiences, and internal media that people actually use.</p>
+    <p class="hero-bio">I build the internal engines that drive business growth. With over 6 years of experience across IT and healthcare, I bridge the gap between corporate strategy and employee engagement. I specialize in designing corporate media and automating HR processes to create high-performing employer brands that actually deliver on business goals.</p>
     <div class="hero-cta">
       <a href="#services" class="btn-primary">See my services</a>
-      <a href="#contact" class="btn-ghost">Get in touch</a>
+      <a href="https://www.linkedin.com/in/yulia-kapustinskaya-0aa48a15b" target="_blank" class="btn-ghost">Get in touch</a>
     </div>
-    <div class="hero-location" style="margin-top:40px;">📍 Dubai, UAE · Open to remote & relocation</div>
+    <div class="hero-location" style="margin-top:32px;">📍 Dubai, UAE · Open to remote & relocation</div>
     <div class="hero-industries" style="margin-top:12px;">
       <span class="industry-tag">IT & Gov</span>
       <span class="industry-tag">Healthcare</span>
@@ -686,28 +732,28 @@
       <span class="industry-tag">Finance</span>
       <span class="industry-tag">Remote Teams</span>
     </div>
-    <div class="hero-stats" style="margin-top:48px;">
-      <div class="stat-cell">
-        <div class="stat-num">40<span>%</span></div>
-        <div class="stat-desc">Employee loyalty & engagement growth — Dept. of IT, Moscow Gov</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">1.5<span>×</span></div>
-        <div class="stat-desc">Intranet traffic growth after relaunch</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">60<span>%</span></div>
-        <div class="stat-desc">Internal media readership growth — SM-Clinic</div>
-      </div>
-      <div class="stat-cell">
-        <div class="stat-num">6<span>+</span></div>
-        <div class="stat-desc">Years in internal comms & employer branding</div>
-      </div>
+  </div>
+
+  <!-- COLUMN 3: STATS -->
+  <div class="hero-stats-col">
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">40<span>%</span></div>
+      <div class="hero-stat-desc">Employee loyalty & engagement growth — Dept. of IT, Moscow Gov</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">1.5<span>×</span></div>
+      <div class="hero-stat-desc">Intranet traffic growth after relaunch</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">60<span>%</span></div>
+      <div class="hero-stat-desc">Internal media readership growth — SM-Clinic</div>
+    </div>
+    <div class="hero-stat-item">
+      <div class="hero-stat-num">6<span>+</span></div>
+      <div class="hero-stat-desc">Years in internal comms & employer branding</div>
     </div>
   </div>
-  <div class="hero-photo">
-    <img src="https://raw.githubusercontent.com/yuliakapya/yulia-site/main/photo.jpg" alt="Yulia Kapustinskaya" />
-  </div>
+
 </section>
 
 <!-- SERVICES -->
@@ -1076,66 +1122,12 @@
       <div style="font-size:10px; letter-spacing:0.14em; text-transform:uppercase; color:var(--accent); margin-bottom:20px;">Consulting & Projects</div>
       <p style="font-size:14px; color:var(--mid); line-height:1.75; margin-bottom:32px;">Project-based and retainer work for companies that need an external communications partner — for a specific task or ongoing support.</p>
 
-      <div style="display:flex; flex-direction:column; gap:1px; background:var(--warm); border:1px solid #ddd8ce;">
-
-        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Communications Audit</div>
-            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Diagnose gaps, map channels, deliver recommendations</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $1,500</div>
-            <div style="font-size:11px; color:var(--muted);">/ 180,000 ₽</div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Internal Comms Strategy</div>
-            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Full strategy development, 4–8 weeks</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $3,000</div>
-            <div style="font-size:11px; color:var(--muted);">/ 280,000 ₽</div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Content Plan & Editorial Policy</div>
-            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Editorial strategy, tone of voice, content calendar</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $800</div>
-            <div style="font-size:11px; color:var(--muted);">/ 80,000 ₽</div>
-          </div>
-        </div>
-
-        <div style="background:var(--paper); padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px;">
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Corporate Book / Magazine</div>
-            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Concept, structure, content production</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $2,500</div>
-            <div style="font-size:11px; color:var(--muted);">/ 230,000 ₽</div>
-          </div>
-        </div>
-
-        <div style="background:#f0ece4; padding:22px 24px; display:grid; grid-template-columns:1fr auto; align-items:center; gap:16px; border-top: 2px solid var(--ink);">
-          <div>
-            <div style="font-size:14px; font-weight:500; color:var(--ink); margin-bottom:4px;">Monthly Retainer</div>
-            <div style="font-size:12px; color:var(--muted); line-height:1.5;">Ongoing advisory, content oversight, strategic support</div>
-          </div>
-          <div style="text-align:right;">
-            <div style="font-family:'Cormorant Garamond',serif; font-size:22px; color:var(--ink);">from $1,500<span style="font-size:14px;">/mo</span></div>
-            <div style="font-size:11px; color:var(--muted);">/ 150,000 ₽/мес</div>
-          </div>
-        </div>
-
+      <div style="background:var(--paper); border:1px solid #ddd8ce; padding:36px;">
+        <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--ink); margin-bottom:16px; line-height:1.2;">Every project is <em style="color:var(--accent);">unique.</em></div>
+        <p style="font-size:15px; color:var(--mid); line-height:1.75; margin-bottom:28px;">Pricing depends on the scope, timeline, and size of your company. Let's talk about what you need and I'll put together a tailored proposal.</p>
+        <a href="/cdn-cgi/l/email-protection#027b776e6b632c6963727771766b6c7169637b6342656f636b6e2c616d6f" class="btn-primary" style="display:inline-block; margin-bottom:16px;">Request a quote</a>
+        <p style="font-size:13px; color:var(--muted); margin-top:12px;">or email me directly at <a href="/cdn-cgi/l/email-protection#8df4f8e1e4eca3e6ecfdf8fef9e4e3fee6ecf4eccdeae0ece4e1a3eee2e0" style="color:var(--ink);"><span class="__cf_email__" data-cfemail="1c656970757d32777d6c696f6875726f777d657d5c7b717d7570327f7371">[email&#160;protected]</span></a></p>
       </div>
-
-      <p style="font-size:12px; color:var(--muted); margin-top:16px; line-height:1.6;">Final pricing depends on company size, scope, and timeline. All projects start with a free 30-minute call.</p>
     </div>
 
     <!-- HIRE TRACK -->
@@ -1174,7 +1166,7 @@
           <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Remote-friendly</span>
         </div>
         <p style="font-size:13px; color:var(--muted); line-height:1.6;">Salary expectations available on request. Let's start with a conversation.</p>
-        <a href="#contact" class="btn-primary" style="display:inline-block; margin-top:16px;">Get in touch</a>
+        <a href="https://www.linkedin.com/in/yulia-kapustinskaya-0aa48a15b" target="_blank" class="btn-primary" style="display:inline-block; margin-top:16px;">Get in touch</a>
       </div>
 
     </div>
@@ -1183,6 +1175,4 @@
 
 <!-- CONTACT -->
 <section id="contact">
-  <h2 class="contact-headline">Ready to build something <em>worth reading.</em></h2>
-  <p class="contact-sub">Open for full-time roles, contract work, and consulting projects.</p>
-  <p class="contact-detail">Dubai, UAE · <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="6d141801040c43060c1d181e1904031e060c140c2d0a000c0401430e0200">
+  <h2 class="contact-headline">Ready to build something
