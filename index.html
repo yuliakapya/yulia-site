@@ -676,6 +676,82 @@
     .article-date, .article-type { display: none; }
   }
   .portfolio-grid > div[style*="grid-column"] { grid-column: span 2; }
+
+  /* ACCORDION ARTICLES */
+  .article-row {
+    cursor: pointer;
+    border-bottom: 1px solid var(--warm);
+    padding: 0;
+  }
+
+  .article-header {
+    display: grid;
+    grid-template-columns: 80px 1fr auto;
+    align-items: start;
+    gap: 28px;
+    padding: 26px 0;
+    transition: opacity 0.2s;
+  }
+
+  .article-row:hover .article-title { color: var(--accent); }
+
+  .article-toggle {
+    font-size: 20px;
+    color: var(--muted);
+    transition: transform 0.3s;
+    line-height: 1;
+    padding-top: 4px;
+    flex-shrink: 0;
+    user-select: none;
+  }
+
+  .article-row.open .article-toggle {
+    transform: rotate(45deg);
+    color: var(--accent);
+  }
+
+  .article-body {
+    display: none;
+    padding: 0 0 32px 108px;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .article-row.open .article-body {
+    display: block;
+  }
+
+  .article-teaser {
+    font-size: 15px;
+    color: var(--mid);
+    line-height: 1.8;
+    max-width: 640px;
+    margin-bottom: 12px;
+  }
+
+  .article-points {
+    list-style: none;
+    margin-bottom: 24px;
+  }
+
+  .article-points li {
+    font-size: 14px;
+    color: var(--mid);
+    padding: 6px 0;
+    border-bottom: 1px solid var(--warm);
+  }
+
+  .article-points li::before {
+    content: '— ';
+    color: var(--accent);
+  }
+
+  .article-cta {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+  }
+
 </style>
 </head>
 <body>
@@ -838,7 +914,7 @@
     <div class="service-card">
       <div class="service-tag">Copywriting & Editing</div>
       <div class="service-name">Expert Articles, Speeches & Corporate Copy</div>
-      <div class="service-desc">Words that work. I write expert content, executive speeches, longreads, and corporate copy that sounds like a human wrote it — because one did.</div>
+      <div class="service-desc">Every brief has a real story behind it. I find it — through stakeholder interviews, sharp editing, and an instinct for what actually matters.</div>
       <ul class="service-items">
         <li>Expert articles & longreads</li>
         <li>Executive speechwriting</li>
@@ -984,49 +1060,147 @@
   </div>
   <div class="articles-list">
 
-    <div class="article-row">
-      <div class="article-date">2025</div>
-      <div>
-        <div class="article-title">Why Your Corporate Portal Has No Traffic — And How to Fix It</div>
-        <div class="article-summary">A practical framework for diagnosing low intranet engagement: information architecture, content gaps, ownership models, and adoption strategy.</div>
+    <!-- ARTICLE 1 — with dropdown -->
+    <div class="article-row" onclick="this.classList.toggle('open')">
+      <div class="article-header">
+        <div class="article-date">2025</div>
+        <div>
+          <div class="article-title">21 Non-Standard Internal Communication Channels That Engage Employees Far More Powerfully Than Email</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="article-type">Guide</div>
+          <div class="article-toggle">+</div>
+        </div>
       </div>
-      <div class="article-type">Guide</div>
+      <div class="article-body">
+        <p class="article-teaser">Most companies use email as their primary internal channel — and wonder why nobody reads it. This guide maps 21 non-obvious touchpoints where employees are already present and receptive: from elevator screens to Wi-Fi push notifications, CEO voice messages to printer displays.</p>
+        <ul class="article-points">
+          <li>Physical environment channels — TV screens, wall projections, bathroom mirrors, coffee cups</li>
+          <li>Micro-touchpoints — Wi-Fi notifications, printer screens, QR codes on meeting room doors</li>
+          <li>Audio formats — CEO voice messages, internal podcasts, audio news digests</li>
+          <li>Gamification — interactive quizzes, Telegram bots, live leaderboards</li>
+          <li>Behavioural triggers — staircase messages, pop-up cards, desktop easter eggs</li>
+        </ul>
+        <p style="font-size:13px; color:var(--muted); margin-bottom:20px;">Based on real cases from the Dept. of IT, Moscow Government and SM-Clinic Group.</p>
+        <div class="article-cta">
+          <a href="https://raw.githubusercontent.com/yuliakapya/yulia-site/main/yulia-guide-final.pptx" download class="btn-primary">Download Guide</a>
+          <a href="mailto:yulia.kapustinskaya@gmail.com" class="btn-ghost">Get in touch</a>
+        </div>
+      </div>
     </div>
 
-    <div class="article-row">
-      <div class="article-date">2025</div>
-      <div>
-        <div class="article-title">What Is Editorial Policy and Why Every Internal Media Needs One</div>
-        <div class="article-summary">Editorial policy explained: how to build tone of voice, content rules, and publication standards that your whole team can follow.</div>
+    <!-- ARTICLE 2 — with dropdown -->
+    <div class="article-row" onclick="this.classList.toggle('open')">
+      <div class="article-header">
+        <div class="article-date">2025</div>
+        <div>
+          <div class="article-title">Why Your Corporate Portal Has No Traffic — And How to Fix It</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="article-type">Guide</div>
+          <div class="article-toggle">+</div>
+        </div>
       </div>
-      <div class="article-type">Article</div>
+      <div class="article-body">
+        <p class="article-teaser">A corporate intranet with no readers is just an expensive folder. The problem is almost never technical — it's editorial, structural, and cultural. This guide walks through the most common reasons portals fail and what to do about each one.</p>
+        <ul class="article-points">
+          <li>Wrong content architecture — organised for the company, not the employee</li>
+          <li>No editorial ownership — nobody responsible for what gets published</li>
+          <li>Missing adoption strategy — launched with a bang, forgotten in a week</li>
+          <li>No feedback loops — you publish but never learn what people actually need</li>
+        </ul>
+        <div class="article-cta">
+          <a href="mailto:yulia.kapustinskaya@gmail.com" class="btn-primary">Request the framework</a>
+          <a href="https://www.linkedin.com/in/yulia-kapustinskaya-0aa48a15b" target="_blank" class="btn-ghost">Connect on LinkedIn</a>
+        </div>
+      </div>
     </div>
 
-    <div class="article-row">
-      <div class="article-date">2024</div>
-      <div>
-        <div class="article-title">Building an Internal Brand Ambassador Program from Scratch</div>
-        <div class="article-summary">Honest lessons from launching peer-to-peer ambassador programs in healthcare and IT — what motivates people, what fails, and what metrics matter.</div>
+    <!-- ARTICLE 3 — with dropdown -->
+    <div class="article-row" onclick="this.classList.toggle('open')">
+      <div class="article-header">
+        <div class="article-date">2025</div>
+        <div>
+          <div class="article-title">What Is Editorial Policy and Why Every Internal Media Needs One</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="article-type">Article</div>
+          <div class="article-toggle">+</div>
+        </div>
       </div>
-      <div class="article-type">Case study</div>
+      <div class="article-body">
+        <p class="article-teaser">Without editorial policy, internal communications drift — different people write in different tones, topics get repeated or missed, and the whole thing feels inconsistent. An editorial policy is the document that prevents all of that. Here's what it includes and how to build one.</p>
+        <ul class="article-points">
+          <li>Tone of voice — how you sound, what you avoid, what you never say</li>
+          <li>Content rubrics — recurring formats that give structure to your editorial calendar</li>
+          <li>Approval workflow — who reviews what before it goes out</li>
+          <li>Channel guidelines — what content belongs where</li>
+        </ul>
+        <div class="article-cta">
+          <a href="mailto:yulia.kapustinskaya@gmail.com" class="btn-primary">Ask me about this</a>
+        </div>
+      </div>
     </div>
 
-    <div class="article-row">
-      <div class="article-date">2024</div>
-      <div>
-        <div class="article-title">Merch That Means Something: Employer Experience Beyond the T-Shirt</div>
-        <div class="article-summary">Why most corporate merch doesn't build culture — and how to design physical touchpoints that actually reinforce belonging in distributed teams.</div>
+    <!-- ARTICLE 4 — title only -->
+    <div class="article-row" onclick="this.classList.toggle('open')">
+      <div class="article-header">
+        <div class="article-date">2024</div>
+        <div>
+          <div class="article-title">The Internal Comms Audit: 10 Questions That Reveal What's Actually Broken</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="article-type">Framework</div>
+          <div class="article-toggle">+</div>
+        </div>
       </div>
-      <div class="article-type">Article</div>
+      <div class="article-body">
+        <p class="article-teaser">Before you redesign anything — run this audit. A diagnostic framework for HR directors and communications leads who suspect something is off but can't name it yet. Coming soon.</p>
+        <div class="article-cta">
+          <a href="mailto:yulia.kapustinskaya@gmail.com" class="btn-primary">Get notified when published</a>
+        </div>
+      </div>
     </div>
 
-    <div class="article-row">
-      <div class="article-date">2024</div>
-      <div>
-        <div class="article-title">Internal Communications for Remote Teams: A Practical Framework</div>
-        <div class="article-summary">How to design a communication architecture when your team is spread across time zones, roles, and levels of digital fluency.</div>
+    <!-- ARTICLE 5 — title only -->
+    <div class="article-row" onclick="this.classList.toggle('open')">
+      <div class="article-header">
+        <div class="article-date">2024</div>
+        <div>
+          <div class="article-title">Employer Brand Is Not a Campaign. It's a System.</div>
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="article-type">Article</div>
+          <div class="article-toggle">+</div>
+        </div>
       </div>
-      <div class="article-type">Framework</div>
+      <div class="article-body">
+        <p class="article-teaser">Why one-off hiring campaigns fail and what a real employer brand infrastructure looks like — EVP, internal media, ambassador programs, and the metrics that actually matter. Coming soon.</p>
+        <div class="article-cta">
+          <a href="mailto:yulia.kapustinskaya@gmail.com" class="btn-primary">Get notified when published</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- ARTICLE 6 — title only -->
+    <div class="article-row" onclick="this.classList.toggle('open')">
+      <div class="article-header">
+        <div class="article-date">2024</div>
+        <div>
+          <div class="article-title">How to Launch a Corporate Newspaper Nobody Will Ignore</div>
+
+        </div>
+        <div style="display:flex; align-items:center; gap:16px;">
+          <div class="article-type">Case study</div>
+          <div class="article-toggle">+</div>
+        </div>
+      </div>
+      <div class="article-body">
+        <p class="article-teaser">Lessons from building internal media at SM-Clinic Group — editorial concept, interview process, distribution strategy, and how we grew readership by 60%. Coming soon.</p>
+        <div class="article-cta">
+          <a href="mailto:yulia.kapustinskaya@gmail.com" class="btn-primary">Get notified when published</a>
+        </div>
+      </div>
     </div>
 
   </div>
@@ -1130,8 +1304,8 @@
       <div style="background:var(--paper); border:1px solid #ddd8ce; padding:36px;">
         <div style="font-family:'Cormorant Garamond',serif; font-size:28px; color:var(--ink); margin-bottom:16px; line-height:1.2;">Every project is <em style="color:var(--accent);">unique.</em></div>
         <p style="font-size:15px; color:var(--mid); line-height:1.75; margin-bottom:28px;">Pricing depends on the scope, timeline, and size of your company. Let's talk about what you need and I'll put together a tailored proposal.</p>
-        <a href="/cdn-cgi/l/email-protection#027b776e6b632c6963727771766b6c7169637b6342656f636b6e2c616d6f" class="btn-primary" style="display:inline-block; margin-bottom:16px;">Request a quote</a>
-        <p style="font-size:13px; color:var(--muted); margin-top:12px;">or email me directly at <a href="/cdn-cgi/l/email-protection#8df4f8e1e4eca3e6ecfdf8fef9e4e3fee6ecf4eccdeae0ece4e1a3eee2e0" style="color:var(--ink);"><span class="__cf_email__" data-cfemail="1c656970757d32777d6c696f6875726f777d657d5c7b717d7570327f7371">[email&#160;protected]</span></a></p>
+        <a href="/cdn-cgi/l/email-protection#4b323e27222a65202a3b3e383f222538202a322a0b2c262a222765282426" class="btn-primary" style="display:inline-block; margin-bottom:16px;">Request a quote</a>
+        <p style="font-size:13px; color:var(--muted); margin-top:12px;">or email me directly at <a href="/cdn-cgi/l/email-protection#fd848891949cd3969c8d888e8994938e969c849cbd9a909c9491d39e9290" style="color:var(--ink);"><span class="__cf_email__" data-cfemail="ff868a93969ed1949e8f8a8c8b96918c949e869ebf98929e9693d19c9092">[email&#160;protected]</span></a></p>
       </div>
     </div>
 
@@ -1171,13 +1345,4 @@
           <span style="font-size:11px; padding:5px 12px; border:1px solid var(--warm); color:var(--mid);">Remote-friendly</span>
         </div>
         <p style="font-size:13px; color:var(--muted); line-height:1.6;">Salary expectations available on request. Let's start with a conversation.</p>
-        <a href="https://www.linkedin.com/in/yulia-kapustinskaya-0aa48a15b" target="_blank" class="btn-primary" style="display:inline-block; margin-top:16px;">Get in touch</a>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <h2 class="contact-headline">Ready to build something
+        <a href="https://www.linkedin.com/in/yulia-kapustinskaya-0aa48a15b" target="_blank" class="btn-primary
